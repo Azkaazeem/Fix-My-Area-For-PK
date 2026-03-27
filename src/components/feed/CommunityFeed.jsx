@@ -231,6 +231,10 @@ export const CommunityFeed = ({ limit, compact = false, showViewAll = false, tit
           </div>
         )}
 
+
+
+        
+
         {!isAuthenticated && !compact && (
           <p className="mt-5 text-sm text-muted">Only logged-in users can vote. Anonymous visitors can browse reports but cannot influence ranking.</p>
         )}
