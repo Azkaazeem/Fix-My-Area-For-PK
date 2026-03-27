@@ -3,10 +3,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Outlet, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { NavLink } from "./NavLink";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const AppShell = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { user, isAuthenticated } = useAuth();
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -31,6 +33,9 @@ export const AppShell = () => {
             <NavLink to="/report">Report</NavLink>
             <NavLink to="/my-reports">My Reports</NavLink>
             <NavLink to="/all-reports">All Reports</NavLink>
+            {isAuthenticated && user?.email === "admin@gmail.com" && (
+              <NavLink to="/admin">Dashboard</NavLink>
+            )}
             <NavLink to="/auth">Account</NavLink>
           </nav>
 
@@ -65,6 +70,9 @@ export const AppShell = () => {
                 <NavLink to="/report" className="w-full rounded-2xl bg-elevated/50 px-4 py-3 text-left">Report</NavLink>
                 <NavLink to="/my-reports" className="w-full rounded-2xl bg-elevated/50 px-4 py-3 text-left">My Reports</NavLink>
                 <NavLink to="/all-reports" className="w-full rounded-2xl bg-elevated/50 px-4 py-3 text-left">All Reports</NavLink>
+                {isAuthenticated && user?.email === "admin@gmail.com" && (
+                  <NavLink to="/admin" className="w-full rounded-2xl bg-elevated/50 px-4 py-3 text-left">Dashboard</NavLink>
+                )}
                 <NavLink to="/auth" className="w-full rounded-2xl bg-elevated/50 px-4 py-3 text-left">Account</NavLink>
               </div>
             </motion.div>

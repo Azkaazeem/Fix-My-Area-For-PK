@@ -9,6 +9,7 @@ import { IssueDetailPage } from "./pages/IssueDetailPage";
 import { MyReportsPage } from "./pages/MyReportsPage";
 import { ReportPage } from "./pages/ReportPage";
 import { AdminDashboard } from "./pages/AdminDashboard";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/my-reports" element={<MyReportsPage />} />
           <Route path="/issues/:issueId" element={<IssueDetailPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
       <ThemeCustomizer />
